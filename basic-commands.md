@@ -62,12 +62,12 @@ Logical NOT of expression.
 One quirk in how the order-of-operations occurs: the typing of strings and integers has precedence over all other operations. That means if you try
 
 	A$="HELLO"
-	PRINT A$&gt;"GOODBYE"
+	PRINT A$>"GOODBYE"
 	
 
 it will fail, because the parse things that A$ is a string first, before it evaluates the whole expression A$&gt;"GOODBYE". However, all expressions in parenthesis are assumed to evaluate to numbers, so you can do
 
-    PRINT (A$&gt;"GOODBYE")
+    PRINT (A$>"GOODBYE")
 	
 
 Strings are 8-bit clean (they can contain zero-valued bytes), so they can be used as hardware buffers.
@@ -504,21 +504,21 @@ Output the string data &lt;write string&gt; over the socket given by &lt;socket 
 
 Error codes for SD/MMC command
 
-		 0	FR\_OK (no error)
-		 1	FR\_BASIC,	    	
-		 2	FR\_NOT\_READY,		
-		 3	FR\_NO\_FILE,			
-		 4	FR\_NO\_PATH,			
-		 5	FR\_INVALID\_NAME,	
-		 6	FR\_INVALID\_DRIVE,	
-		 7	FR\_DENIED,			
-		 8	FR\_EXIST,			
-		 9	FR\_RW\_ERROR,		
-		 10	FR\_WRITE\_PROTECTED,	
-		 11	FR\_NOT\_ENABLED,		
-		 12	FR\_NO\_FILESYSTEM,	
-		 13	FR\_INVALID\_OBJECT,	
-		 14	FR\_MKFS\_ABORTED
+		 0	FR_OK (no error)
+		 1	FR_BASIC,	    	
+		 2	FR_NOT_READY,		
+		 3	FR_NO_FILE,			
+		 4	FR_NO_PATH,			
+		 5	FR_INVALID_NAME,	
+		 6	FR_INVALID_DRIVE,	
+		 7	FR_DENIED,			
+		 8	FR_EXIST,			
+		 9	FR_RW_ERROR,		
+		 10	FR_WRITE_PROTECTED,	
+		 11	FR_NOT_ENABLED,		
+		 12	FR_NO_FILESYSTEM,	
+		 13	FR_INVALID_OBJECT,	
+		 14	FR_MKFS_ABORTED
 		 
 
 &lt;ercode&gt;=**FCLOSE**(&lt;fileno&gt;)  
