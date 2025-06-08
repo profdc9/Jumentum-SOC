@@ -29,28 +29,28 @@ Configures whether the controller attempts to initalize the network. NONET=y ind
 **DHCP**\=y or n  
 Configures whether the controller attempts to use DHCP to configure the IP address of the unit. If the unit is not able to acquire an address after a couple minutes, it defaults to the values given by HOSTADDR/NETMASK/ROUTER. You must set DHCP=n if you do not want Jumentum to use DHCP.
 
-**MACADDR**\=<macaddr> e.g. 00:22:33:44:55:66  
+**MACADDR**\=&lt;macaddr&gt; e.g. 00:22:33:44:55:66  
 Configures the MAC address of the unit. This is useful if there will be more than one Jumentum on your network, so that they do not share the same MAC address. Note that the numerals in the MAC address are hexadecimal.
 
-**HOSTADDR**\=<ipaddr> e.g. 10.0.0.4  
+**HOSTADDR**\=&lt;ipaddr&gt; e.g. 10.0.0.4  
 Configures the IP address of the unit. If DHCP is enabled, the unit first attempts to use DHCP to acquire an address, otherwise it uses this value. If HOSTADDR is not specified, the default is 10.0.0.4.
 
-**NETMASK**\=<netmask> e.g. 255.255.255.0  
+**NETMASK**\=&lt;netmask&gt; e.g. 255.255.255.0  
 Configures the netmask of the unit. If DHCP is enabled, the unit first uses DHCP to acquire the netmask, otherwise this value is used. If NETMASK is not specified, the default is 255.0.0.0.
 
-**ROUTER**\=<router> e.g. 10.0.0.1  
+**ROUTER**\=&lt;router&gt; e.g. 10.0.0.1  
 Configures the default router (also called gateway) for the unit to use. First attempts to acquire by DHCP if DHCP is enabled. If ROUTER is not specified, the default is 10.0.0.1
 
-**SMTP**\=<smtp server address>  
+**SMTP**\=&lt;smtp server address&gt;  
 Configures the address of the SMTP server to send mail to.
 
-**HOSTNAME**\=<hostname>  
+**HOSTNAME**\=&lt;hostname&gt;  
 Configures the host name that appears in outgoing E-mails.
 
-**TELNETPORT**\=<port #>  
+**TELNETPORT**\=&lt;port #&gt;  
 Configures the port number to use for the telnet server. Defaults to 23.
 
-**HTTPPORT**\=<port #>  
+**HTTPPORT**\=&lt;port #&gt;  
 Configures the port number to use for the web server. Defaults to 80.
 
 Other data can be placed into the configuration file, and can be read with the CONF$ function from Basic, so that one can avoid modifying the Basic program itself if one wishes to modify its behavior.
