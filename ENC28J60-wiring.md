@@ -6,13 +6,13 @@ follows:
 
 Pin on ENC28J60 evaluation board - pin on LPC-P2148
 
-SCK (pin 1)   - P0.17 LPC2148 (SCK1)
-MOSI (pin 2)  - P0.19 LPC2148 (MOSI1)
-MISO (pin 3)  - P0.18 LPC2148 (MISO1)
-CS (pin 7)    - P0.21 LPC2148
-RST (pin 8)   - P0.22 LPC2148
-GND (pin 9)   - GND LPC2148
-3.3V (pin 10) - 3.3V LPC2148
+* SCK (pin 1)   - P0.17 LPC2148 (SCK1)
+* MOSI (pin 2)  - P0.19 LPC2148 (MOSI1)
+* MISO (pin 3)  - P0.18 LPC2148 (MISO1)
+* CS (pin 7)    - P0.21 LPC2148
+* RST (pin 8)   - P0.22 LPC2148
+* GND (pin 9)   - GND LPC2148
+* 3.3V (pin 10) - 3.3V LPC2148
 
 The pins for the SPI1 (SSP1) are connected to both the SD/MMC card slot and
 the ENC28J60.  Pin P0.20 is used as the select line on the SD/MMC card slot,
@@ -23,14 +23,14 @@ The software can also be used with a LPC2119 board (ET-ARM stamp and ET-ARM Stam
 Futurlec (www.futurlec.com) and the ET-MINI ENC28J60 board.  Here are the connections
 between these two:
 
-GND ENC28J60 - GND LPC2119
-3V3 ENC28J60 - 3V3 LPC2119
-CS  ENC28J60 - P08 LPC2119 P0.8
-RST ENC28J60 - P09 LPC2119 P0.9
-SDO ENC28J60 - P06 LPC2119 MOSI0
-SDI ENC28J60 - P05 LPC2119 MISO0
-SCK ENC28J60 - P04 LPC2119 SCK0 
-+3V3 LPC2119 - P07 LPC2119 SSEL0 (needed to enable SPI slave on LPC2119)
+* GND ENC28J60 - GND LPC2119
+* 3V3 ENC28J60 - 3V3 LPC2119
+* CS  ENC28J60 - P08 LPC2119 P0.8
+* RST ENC28J60 - P09 LPC2119 P0.9
+* SDO ENC28J60 - P06 LPC2119 MOSI0
+* SDI ENC28J60 - P05 LPC2119 MISO0
+* SCK ENC28J60 - P04 LPC2119 SCK0 
+* +3V3 LPC2119 - P07 LPC2119 SSEL0 (needed to enable SPI slave on LPC2119)
 
 The same connections should work for the LPC2106.  There are pictures of the two
 devices in this distribution under the directory "pics".  There is also
