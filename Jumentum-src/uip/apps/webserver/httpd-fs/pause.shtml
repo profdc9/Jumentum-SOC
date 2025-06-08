@@ -1,0 +1,6 @@
+%!: /header.html
+<h1>Pause program</h1>
+<BR>
+%! pause-basic
+<BR>
+%!: /footer.html

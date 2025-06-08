@@ -1,0 +1,18 @@
+%!: /header.html
+<h1>Program the controller</h1>
+<BR>
+Program Listing:
+<FORM METHOD=POST NAME="FORM" ACTION="/prg/">
+<TEXTAREA NAME="PRG" ROWS="20" COLS="80" WRAP=OFF>
+%! program-basic
+</TEXTAREA>
+<BR>
+<INPUT TYPE=SUBMIT VALUE="Upload Program">
+<BR>
+<BR>
+<INPUT TYPE=RESET VALUE="Revert to Original">
+<INPUT TYPE=BUTTON VALUE="Clear Area" ONCLICK="document.FORM.PRG.value=''">
+</FORM>
+<BR>
+<A HREF="http://jumentum.sourceforge.net/basic-commands.html" TARGET="_blank">Basic Command Reference</A>
+%!: /footer.html

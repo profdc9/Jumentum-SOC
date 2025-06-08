@@ -1,0 +1,6 @@
+%!: /header.html
+<h1>Stop program</h1>
+<BR>
+%! stop-basic
+<BR>
+%!: /footer.html

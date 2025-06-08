@@ -1,0 +1,126 @@
+APPNAME = main
+
+# Tool definitions
+export CC		= gcc
+export LD		= ld -v
+export AR		= ar
+export AS		= as
+export CP		= objcopy
+export OD		= objdump
+export NM		= nm
+export RM		= rm
+
+
+# Configure whether serial console is on UART0 or UART1 - must not be
+# the same as the port SLIP network interface is on (if configured)
+CONSOLE = -DSTDOUTSER0
+# CONSOLE = -DSTDOUTSER1
+
+# Configure the type of network interface, either SLIP or ENC28J60 ethernet.
+# Comment out one or the other.  With SLIP, one must choose if the SLIP
+# is on UART0 or UART1
+
+# Configuration for LPC2378 with built-in ethernet
+NETWORKTYPE = -DWINPCAP -DINCNETWORK -DETHERNET
+NETINTERFACE=net.o
+ADDNETL = libuip.a win32/wpd/lib/libpacket.a win32/wpd/lib/libwpcap.a  -luser32  
+
+# Include for FAT FS
+# ADDFATFS = -DINCFATFS
+# ADDFATFSL = libfatfs.a
+# or not
+# ADDFATFS =
+# ADDFATFSL = 
+
+# Comment out for no editor
+ADDEDITOR = -DEDITOR
+ADDEDITORO = editor.o
+# Comment out for editor
+#ADDEDITOR = 
+#ADDEDITORO =
+
+#Floating point support
+# ADDFLOAT = 
+# ADDFLOATL = lpc2000/lib/libm.a
+#Uncomment for int only
+ADDFLOAT = -DINTONLY
+ADDFLOATL = 
+
+#USE modified DLMalloc and built-in function alternatives that takes less space
+ADDDLMALLOC = -DUSEDLMALLOC -DMYFUNC
+ADDDLMALLOCO = malloc.o
+ADDDLMALLOCL = 
+# Uncomment to use newlib malloc
+#ADDDLMALLOC = 
+#ADDDLMALLOCO =
+#ADDDLMALLOCL = lib/libc.a
+
+# Tool flags
+export CFLAGS  = -I./ -I../ -I/usr/include -ggdb -c -W -DDEBUG $(ADDFLOAT) $(ADDEDITOR) $(ADDDLMALLOC) $(BOARDTYPE) $(CONSOLE) $(NETWORKTYPE) $(ADDFATFS) 
+export ASFLAGS = -ahls -mapcs-32
+export LFLAGS  =  -lm libcpu.a $(ADDFATFSL) $(ADDDLMALLOCL) $(ADDFLOATL) $(ADDNETL) 
+export CPFLAGS = -O ihex
+#export ODFLAGS	= -x --syms
+export ODFLAGS	= -x --syms -d -S
+export ODFLAGSLSS	= -h -S -C
+export NMFLAGS = -n
+export THUMBMODE = 
+
+CSRCS	= 
+OBJS 	= $(CSRCS:.c=.o)
+
+EXAMPLES = basic
+SUBDIRS = uip fatfs win32
+
+all: subdirs $(EXAMPLES)
+
+subdirs:
+	@for i in $(SUBDIRS); do \
+	(cd $$i; $(MAKE) $(MFLAGS) $(MYMAKEFLAGS) all); done
+
+basic:	$(OBJS) main.o basic.o lib.o $(NETINTERFACE) $(ADDDLMALLOCO) $(ADDEDITORO)
+
+prg :
+#  For LPC2148 with 12 MHz crystal
+	lpc21isp\lpc21isp -control basic.hex com1 38400 12000
+#  For LPC2119 with 19.6 MHz crystal
+#	lpc21isp\lpc21isp -control basic.hex com1 38400 19600
+#  For LPC2106 with 14.7 MHz crystal
+#	lpc21isp\lpc21isp -control basic.hex com1 38400 14700
+#	term.bat
+
+flash:
+	$(OPENOCD) -d -f $(OPENOCDCFG)
+
+$(EXAMPLES):
+	@ echo "Building $@ example..."
+	$(CC) -ggdb $^ -o jumentum.exe -Wl,-Map,$@.map $(LFLAGS) 
+
+malloc.o: malloc.c
+	$(CC) -o malloc.o $(CFLAGS) -c malloc.c
+
+main.o: main.c
+	$(CC) -o main.o $(CFLAGS) -c main.c
+
+basic.o: basic.c
+	$(CC) -o basic.o $(CFLAGS) -c basic.c
+
+editor.o: editor.c
+	$(CC) -o editor.o $(CFLAGS) -c editor.c
+
+lib.o: lib.c
+	$(CC) -o lib.o $(CFLAGS) -c lib.c
+
+net.o: net.c
+	$(CC) -o net.o $(CFLAGS) -c net.c
+
+clean:
+	rm `find . -name \*.o -print`
+	rm `find . -name \*.a -print`
+
+# recompile if the Makefile changes
+$(OBJS): Makefile
+
+# phony targets
+.PHONY: clean
+

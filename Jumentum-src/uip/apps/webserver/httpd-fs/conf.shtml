@@ -1,0 +1,18 @@
+%!: /header.html
+<h1>Configure the controller</h1>
+<BR>
+Current Configuration:
+<FORM METHOD=POST NAME="FORM" ACTION="/cnf">
+<TEXTAREA NAME="PRG" ROWS="20" COLS="80" WRAP=OFF>
+%! conf-basic
+</TEXTAREA>
+<BR>
+<INPUT TYPE=SUBMIT VALUE="Upload Configuration">
+<BR>
+<BR>
+<INPUT TYPE=RESET VALUE="Revert to Original">
+<INPUT TYPE=BUTTON VALUE="Clear Area" ONCLICK="document.FORM.PRG.value=''">
+</FORM>
+<BR>
+<A HREF="http://jumentum.sourceforge.net/configuration.html" TARGET="_blank">Configuration Reference</A>
+%!: /footer.html

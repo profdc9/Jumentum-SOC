@@ -1,0 +1,6 @@
+%!: /header.html
+<h1>Reset the controller</h1>
+<BR>
+%! reset-basic
+<BR>
+%!: /footer.html

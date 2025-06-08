@@ -1,0 +1,5 @@
+%!: /header.html
+<h1>Current connections</h1><br><table width="100%">
+<tr><th align=left>Local</th><th align=left>Remote</th><th align=left>State</th><th align=left>Retransmissions</th><th align=left>Timer</th><th align=left>Flags</th></tr>
+%! tcp-connections
+%!: /footer.html

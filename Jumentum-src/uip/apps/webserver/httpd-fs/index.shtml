@@ -1,0 +1,8 @@
+%!: /header.html
+<h1>Jumentum-SOC</h1>
+<BR>
+This is a Jumentum web-based self-contained data acquisition device.  Based on Minibasic, <a href="http://www.sics.se/~adam/uip/">uIP embedded TCP/IP stack</a>, <a href="http://www.kandi-electronics.com/">Kandi Electronics ucEthernet</a>, <a href="http://elm-chan.org/fsw/ff/00index_e.html">ELM FAT FS</a>, ee editor by Yijun Ding, <a HREF="http://jcwren.com/arm">LPC2148 Demo</a>, <a href="http://www.codesourcery.com/sgpp/lite/arm">Codesourcery G++ GNU toolchain</a>, and <a href="http://sourceforge.net/projects/lpcusb/">LPCUSB by Bertrik Sikken</A>.  Jumentum-SOC created by <a href="mailto:profdc9@gmail.com">Daniel Marks</a>.    This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software. 
+<BR><BR><A HREF="/conf.shtml">Configure Controller</A><BR>
+<A HREF="/banksw.shtml">Switch Program Banks</A><BR>
+<A HREF="/reset.shtml">Reset Controller</A><BR>
+%!: /footer.html
